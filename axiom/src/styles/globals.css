@@ -340,3 +340,175 @@ body {
     transform: translateY(0);
   }
 }
+/* ===== Mejor presentación Login / Register ===== */
+.auth-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(36, 40, 70, 0.4), transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(22, 26, 52, 0.5), transparent 60%),
+    linear-gradient(180deg, #0B1020 0%, #0A0F22 100%);
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(14, 18, 34, 0.65);
+  border: 1px solid rgba(82, 86, 120, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(10, 15, 32, 0.35);
+  padding: 48px 40px 40px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.4s ease;
+}
+
+.auth-box h1 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  background: linear-gradient(90deg, #9b87f5 0%, #7c3aed 40%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.auth-box p {
+  color: #C9D4F2;
+  font-size: 16px;
+  margin-bottom: 28px;
+  opacity: .9;
+}
+
+/* Campos mantienen su estilo base, solo suavizamos márgenes */
+.auth-box .field {
+  text-align: left;
+  margin-bottom: 18px;
+}
+.auth-box .field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #C9D4F2;
+  opacity: .9;
+}
+
+/* Errores más visibles y centrados */
+.auth-box .error {
+  margin-top: 8px;
+  background: rgba(255, 75, 75, 0.08);
+  border: 1px solid rgba(255, 75, 75, 0.25);
+  border-radius: 10px;
+  color: #ff7b7b;
+  padding: 10px;
+  font-weight: 600;
+}
+
+/* Transición de entrada */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ===== Pantallas de Login y Register ===== */
+.auth-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(36, 40, 70, 0.4), transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(22, 26, 52, 0.5), transparent 60%),
+    linear-gradient(180deg, #0B1020 0%, #0A0F22 100%);
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(14, 18, 34, 0.7);
+  border: 1px solid rgba(82, 86, 120, 0.2);
+  border-radius: 22px;
+  box-shadow: 0 12px 60px rgba(10, 15, 32, 0.45);
+  padding: 56px 52px 48px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  animation: fadeInUp 0.4s ease;
+}
+
+.auth-box h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 4vw, 40px);
+  font-weight: 900;
+  background: linear-gradient(90deg, #9b87f5 0%, #7c3aed 40%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.auth-box p {
+  color: #C9D4F2;
+  font-size: 17px;
+  margin-bottom: 36px;
+  opacity: .9;
+}
+
+/* Campos */
+.auth-box .field {
+  text-align: left;
+  margin-bottom: 22px;
+}
+.auth-box .field label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #C9D4F2;
+  opacity: .95;
+}
+.auth-box .field input {
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid rgba(82, 86, 120, 0.25);
+  background: rgba(22, 26, 44, 0.65);
+  color: #E6EAF3;
+  padding: 0 14px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+.auth-box .field input:focus {
+  outline: none;
+  border-color: #7c3aed;
+  background: rgba(26, 30, 52, 0.85);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+/* Placeholder sutil */
+.auth-box .field input::placeholder {
+  color: #9BA4C8;
+  opacity: 0.8;
+}
+
+/* Error */
+.auth-box .error {
+  margin-top: 8px;
+  background: rgba(255, 75, 75, 0.08);
+  border: 1px solid rgba(255, 75, 75, 0.25);
+  border-radius: 10px;
+  color: #ff7b7b;
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Transición de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

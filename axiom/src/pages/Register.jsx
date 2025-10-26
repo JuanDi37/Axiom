@@ -26,61 +26,63 @@ export default function Register() {
   };
 
   return (
-    <main className="ax-main">
-      <div className="section">
-        <div className="container-xl" style={{ maxWidth: 520 }}>
-          <h1 style={{ marginTop: 24, marginBottom: 16 }}>Crear cuenta</h1>
-          <p className="hero-sub" style={{ marginBottom: 24 }}>
-            Regístrate para empezar a usar Axiom.
-          </p>
+    <main className="auth-screen">
+      <div className="auth-box fade-enter">
+        <h1>Crear cuenta</h1>
+        <p>Regístrate para empezar a usar Axiom.</p>
 
-          <form onSubmit={onSubmit} className="card-like">
-            <div className="field">
-              <label>Nombre</label>
-              <input
-                name="name"
-                type="text"
-                required
-                value={form.name}
-                onChange={onChange}
-              />
-            </div>
-            <div className="field">
-              <label>Email</label>
-              <input
-                name="email"
-                type="email"
-                required
-                value={form.email}
-                onChange={onChange}
-              />
-            </div>
-            <div className="field">
-              <label>Contraseña</label>
-              <input
-                name="password"
-                type="password"
-                minLength={8}
-                required
-                value={form.password}
-                onChange={onChange}
-              />
-            </div>
+        <form onSubmit={onSubmit}>
+          <div className="field">
+            <label>Nombre</label>
+            <input
+              name="name"
+              type="text"
+              required
+              value={form.name}
+              onChange={onChange}
+            />
+          </div>
+          <div className="field">
+            <label>Email</label>
+            <input
+              name="email"
+              type="email"
+              required
+              value={form.email}
+              onChange={onChange}
+            />
+          </div>
+          <div className="field">
+            <label>Contraseña</label>
+            <input
+              name="password"
+              type="password"
+              minLength={8}
+              required
+              value={form.password}
+              onChange={onChange}
+            />
+          </div>
 
-            {err && (
-              <div className="error" role="alert" style={{ marginBottom: 12 }}>
-                {err}
-              </div>
-            )}
-
-            <div className="actions">
-              <button disabled={loading} className="button-primary" type="submit">
-                {loading ? 'Creando...' : 'Crear cuenta'}
-              </button>
-              <a className="button-ghost" href="/login">Ya tengo cuenta</a>
+          {err && (
+            <div className="error" role="alert">
+              {err}
             </div>
-          </form>
-        </div>
+          )}
+
+          <div className="actions">
+            <button
+              disabled={loading}
+              className="button-primary"
+              type="submit"
+            >
+              {loading ? 'Creando...' : 'Crear cuenta'}
+            </button>
+            <a className="button-ghost" href="/login">
+              Ya tengo cuenta
+            </a>
+          </div>
+        </form>
       </div>
     </main>
   );

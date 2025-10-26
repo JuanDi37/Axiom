@@ -30,50 +30,52 @@ export default function Login() {
   };
 
   return (
-    <main className="ax-main">
-      <div className="section">
-        <div className="container-xl" style={{ maxWidth: 520 }}>
-          <h1 style={{ marginTop: 24, marginBottom: 16 }}>Ingresar</h1>
-          <p className="hero-sub" style={{ marginBottom: 24 }}>
-            Accede a tu cuenta para continuar.
-          </p>
+    <main className="auth-screen">
+      <div className="auth-box fade-enter">
+        <h1>Ingresar</h1>
+        <p>Accede a tu cuenta para continuar.</p>
 
-          <form onSubmit={onSubmit} className="card-like">
-            <div className="field">
-              <label>Email</label>
-              <input
-                name="email"
-                type="email"
-                required
-                value={form.email}
-                onChange={onChange}
-              />
-            </div>
-            <div className="field">
-              <label>Contraseña</label>
-              <input
-                name="password"
-                type="password"
-                required
-                value={form.password}
-                onChange={onChange}
-              />
-            </div>
+        <form onSubmit={onSubmit}>
+          <div className="field">
+            <label>Email</label>
+            <input
+              name="email"
+              type="email"
+              required
+              value={form.email}
+              onChange={onChange}
+            />
+          </div>
+          <div className="field">
+            <label>Contraseña</label>
+            <input
+              name="password"
+              type="password"
+              required
+              value={form.password}
+              onChange={onChange}
+            />
+          </div>
 
-            {err && (
-              <div className="error" role="alert" style={{ marginBottom: 12 }}>
-                {err}
-              </div>
-            )}
-
-            <div className="actions">
-              <button disabled={loading} className="button-primary" type="submit">
-                {loading ? 'Ingresando...' : 'Ingresar'}
-              </button>
-              <a className="button-ghost" href="/register">Crear cuenta</a>
+          {err && (
+            <div className="error" role="alert">
+              {err}
             </div>
-          </form>
-        </div>
+          )}
+
+          <div className="actions">
+            <button
+              disabled={loading}
+              className="button-primary"
+              type="submit"
+            >
+              {loading ? 'Ingresando...' : 'Ingresar'}
+            </button>
+            <a className="button-ghost" href="/register">
+              Crear cuenta
+            </a>
+          </div>
+        </form>
       </div>
     </main>
   );
