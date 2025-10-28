@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Axiom — Respuestas verificadas</title>
+    <meta
+      name="description"
+      content="Axiom: respuestas verificadas para Guatemala, con citas exactas y fecha de vigencia."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <main id="contenido" class="ax-main">
+      <!-- Fondo a borde completo -->
+      <div id="bg-wrap" class="full-bleed" aria-hidden="true">
+        <canvas id="bg-canvas"></canvas>
+        <div class="bg-scrim"></div>
+      </div>
+
+      <!-- HERO -->
+      <header class="hero container-xl">
+        <div class="brand" aria-label="Marca">Axiom</div>
+
+        <h1 class="hero-title measure">
+          Respuestas legales <span class="text-metal">verificadas</span>
+        </h1>
+
+        <p class="hero-sub measure">
+          Para Guatemala. Muestra fragmentos exactos y fecha de vigencia; si no hay sustento, te lo dice.
+        </p>
+
+        <div class="actions" role="group" aria-label="Acciones principales">
+          <a class="button-primary" href="/register">Registrar</a>
+          <a class="button-ghost" href="/login">Ingresar</a>
+        </div>
+      </header>
+
+      <!-- CÓMO FUNCIONA -->
+      <section id="como-funciona" class="section" aria-labelledby="h-como">
+        <div class="container-xl">
+          <h2 id="h-como">¿Cómo funciona?</h2>
+          <ol class="steps">
+            <li class="step">
+              <div class="step-num" aria-hidden="true">1</div>
+              <h3>Carga tus normas y documentos</h3>
+              <p>
+                Organiza por país, tema y <em>vigencia</em>. El sistema indexa PDF/DOC y
+                extrae texto incluso de archivos difíciles.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-num" aria-hidden="true">2</div>
+              <h3>Haz tu pregunta</h3>
+              <p>
+                El motor busca en tu biblioteca y responde <strong>frase por frase con cita</strong> y
+                fragmento exacto.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-num" aria-hidden="true">3</div>
+              <h3>Verificación y transparencia</h3>
+              <p>
+                Si no hay apoyo suficiente, lo indica. Cuando sí, muestra la fuente, párrafo y fecha de
+                publicación/reforma.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- TECNOLOGÍA -->
+      <section id="tecnologia" class="section" aria-labelledby="h-tech">
+        <div class="container-xl">
+          <h2 id="h-tech">Tecnología</h2>
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h3>Frontend</h3>
+              <p>HTML + CSS + JavaScript. Interfaz limpia con resultados y citas. Fondo Hyperspeed optimizado y contraste accesible.</p>
+            </div>
+            <div class="tech-card">
+              <h3>Backend local</h3>
+              <p>Servicio que recibe la pregunta, recupera pasajes y arma la respuesta con verificación y control de alucinaciones.</p>
+            </div>
+            <div class="tech-card">
+              <h3>Citas y vigencia</h3>
+              <p>Cada oración exige cita. Índices por país y fecha (publicación/reforma) para priorizar normas vigentes.</p>
+            </div>
+            <div class="tech-card">
+              <h3>PDFs difíciles</h3>
+              <p>Extracción robusta (OCR cuando se requiera) y normalización para mantener numeración de artículos y contexto.</p>
+            </div>
+            <div class="tech-card">
+              <h3>Base de datos</h3>
+              <p>Relacional para usuarios, contraseñas (hash + salt) e historial de consultas y fuentes.</p>
+            </div>
+            <div class="tech-card">
+              <h3>Experiencia confiable</h3>
+              <p>Si no hay sustento, se muestra claramente. Cuando lo hay, el fragmento exacto aparece con un clic.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer limpio -->
+      <footer class="container-xl footer" aria-label="Pie de página">
+        <div class="brand">Axiom</div>
+      </footer>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
