@@ -1,119 +1,208 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>Axiom — Respuestas verificadas</title>
-    <meta
-      name="description"
-      content="Axiom: respuestas verificadas para Guatemala, con citas exactas y fecha de vigencia."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Consultorías Legales · Guatemala</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   </head>
   <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <!-- Canvas decorativo para el saludo -->
+    <div class="bg-wrap" aria-hidden="true">
+      <canvas id="bg-canvas"></canvas>
+    </div>
 
-    <main id="contenido" class="ax-main">
-      <!-- Fondo a borde completo -->
-      <div id="bg-wrap" class="full-bleed" aria-hidden="true">
-        <canvas id="bg-canvas"></canvas>
-        <div class="bg-scrim"></div>
-      </div>
-
-      <!-- HERO -->
-      <header class="hero container-xl">
-        <div class="brand" aria-label="Marca">Axiom</div>
-
-        <h1 class="hero-title measure">
-          Respuestas legales <span class="text-metal">verificadas</span>
-        </h1>
-
-        <p class="hero-sub measure">
-          Para Guatemala. Muestra fragmentos exactos y fecha de vigencia; si no hay sustento, te lo dice.
-        </p>
-
-        <div class="actions" role="group" aria-label="Acciones principales">
-          <a class="button-primary" href="/register">Registrar</a>
-          <a class="button-ghost" href="/login">Ingresar</a>
+    <!-- Navbar (Bootstrap) -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top border-bottom">
+      <div class="container">
+        <a class="navbar-brand fw-semibold" href="#">Axiom</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+          <div class="ms-auto">
+            <!-- Interacción #1: Modo oscuro/claro -->
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch" />
+              <label class="form-check-label" for="themeSwitch">Modo oscuro</label>
+            </div>
+          </div>
         </div>
-      </header>
+      </div>
+    </nav>
 
-      <!-- CÓMO FUNCIONA -->
-      <section id="como-funciona" class="section" aria-labelledby="h-como">
-        <div class="container-xl">
-          <h2 id="h-como">¿Cómo funciona?</h2>
-          <ol class="steps">
-            <li class="step">
-              <div class="step-num" aria-hidden="true">1</div>
-              <h3>Carga tus normas y documentos</h3>
-              <p>
-                Organiza por país, tema y <em>vigencia</em>. El sistema indexa PDF/DOC y
-                extrae texto incluso de archivos difíciles.
-              </p>
-            </li>
-            <li class="step">
-              <div class="step-num" aria-hidden="true">2</div>
-              <h3>Haz tu pregunta</h3>
-              <p>
-                El motor busca en tu biblioteca y responde <strong>frase por frase con cita</strong> y
-                fragmento exacto.
-              </p>
-            </li>
-            <li class="step">
-              <div class="step-num" aria-hidden="true">3</div>
-              <h3>Verificación y transparencia</h3>
-              <p>
-                Si no hay apoyo suficiente, lo indica. Cuando sí, muestra la fuente, párrafo y fecha de
-                publicación/reforma.
-              </p>
-            </li>
-          </ol>
+    <main>
+      <!-- HERO -->
+      <section class="py-5 text-center">
+        <div class="container">
+          <!-- Saludo visible -->
+          <div class="alert alert-primary mx-auto mb-4 shadow-sm w-auto d-inline-flex align-items-center gap-2">
+            <span id="greetingText" class="fw-semibold">Buenos días</span> 👋
+          </div>
+
+          <h1 class="display-5 fw-bold">
+            Consultorías <span class="text-gradient">Legales</span> para Guatemala
+          </h1>
+
+          <p class="lead mb-0 text-body-secondary">Respuestas breves con citas exactas y trazabilidad a la norma.</p>
+
+          <div class="d-flex gap-2 justify-content-center mt-4">
+            <!-- Botones (Bootstrap) -->
+            <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#demoModal">Ver demo</a>
+            <a class="btn btn-outline-light btn-lg" href="#caracteristicas">Explorar</a>
+          </div>
         </div>
       </section>
 
-      <!-- TECNOLOGÍA -->
-      <section id="tecnologia" class="section" aria-labelledby="h-tech">
-        <div class="container-xl">
-          <h2 id="h-tech">Tecnología</h2>
-          <div class="tech-grid">
-            <div class="tech-card">
-              <h3>Frontend</h3>
-              <p>HTML + CSS + JavaScript. Interfaz limpia con resultados y citas. Fondo Hyperspeed optimizado y contraste accesible.</p>
-            </div>
-            <div class="tech-card">
-              <h3>Backend local</h3>
-              <p>Servicio que recibe la pregunta, recupera pasajes y arma la respuesta con verificación y control de alucinaciones.</p>
-            </div>
-            <div class="tech-card">
-              <h3>Citas y vigencia</h3>
-              <p>Cada oración exige cita. Índices por país y fecha (publicación/reforma) para priorizar normas vigentes.</p>
-            </div>
-            <div class="tech-card">
-              <h3>PDFs difíciles</h3>
-              <p>Extracción robusta (OCR cuando se requiera) y normalización para mantener numeración de artículos y contexto.</p>
-            </div>
-            <div class="tech-card">
-              <h3>Base de datos</h3>
-              <p>Relacional para usuarios, contraseñas (hash + salt) e historial de consultas y fuentes.</p>
-            </div>
-            <div class="tech-card">
-              <h3>Experiencia confiable</h3>
-              <p>Si no hay sustento, se muestra claramente. Cuando lo hay, el fragmento exacto aparece con un clic.</p>
+      <!-- Interacción #2: filtro de datos -->
+      <section class="py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <label for="filterInput" class="form-label">Buscar (ej.: “SQLite”, “pipeline”, “Render”)</label>
+              <input id="filterInput" class="form-control" type="search" placeholder="Escribe para filtrar…" />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Footer limpio -->
-      <footer class="container-xl footer" aria-label="Pie de página">
-        <div class="brand">Axiom</div>
-      </footer>
+      <!-- Cards (Características) -->
+      <section id="caracteristicas" class="py-5">
+        <div class="container">
+          <div id="cardsGrid" class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">SQLite</h5>
+                  <p class="card-text">BD relacional ligera para usuarios, sesiones e historial de consultas y fuentes.</p>
+                  <span class="badge text-bg-secondary">Base de datos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">React bits</h5>
+                  <p class="card-text">Componentes de UI reutilizables: formulario, lista de citas, resaltado de fragmentos.</p>
+                  <span class="badge text-bg-primary">Frontend</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Pipeline de respuesta</h5>
+                  <p class="card-text">Ingreso → búsqueda en corpus → verificación → resumen con referencias.</p>
+                  <span class="badge text-bg-info">Flujo</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Cifrado de contraseñas</h5>
+                  <p class="card-text">Hash seguro (bcrypt/argon2) con sal y políticas básicas de contraseña.</p>
+                  <span class="badge text-bg-danger">Seguridad</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Hosting en Render</h5>
+                  <p class="card-text">Despliegue del frontend y del servicio local con variables de entorno.</p>
+                  <span class="badge text-bg-success">DevOps</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Modelo local “estilo OpenAI”</h5>
+                  <p class="card-text">Compatibilidad con API local para mantener datos y cómputo en casa.</p>
+                  <span class="badge text-bg-dark">IA local</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Control de vigencia</h5>
+                  <p class="card-text">Indexación por país, fecha y versión para evitar respuestas caducas.</p>
+                  <span class="badge text-bg-warning">Normativa</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">PDFs difíciles</h5>
+                  <p class="card-text">Normalización y OCR cuando haga falta; enlaces al fragmento citado.</p>
+                  <span class="badge text-bg-secondary">Documentos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Transparencia</h5>
+                  <p class="card-text">Si no hay soporte suficiente, lo indica; si lo hay, muestra el texto exacto.</p>
+                  <span class="badge text-bg-light text-dark">UX</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal (Bootstrap) -->
+      <div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Demo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              Ejemplo de componente <strong>Modal</strong> de Bootstrap.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a href="#caracteristicas" class="btn btn-primary">Ver características</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
+    <footer class="py-5 border-top">
+      <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 small">
+        <div class="d-flex align-items-center gap-3">
+          <span class="text-muted">&copy; 2025</span>
+          <!-- Enlaces abajo -->
+          <nav class="nav nav-underline">
+            <a class="nav-link px-1" href="#caracteristicas"></a>
+          </nav>
+        </div>
+        <span class="text-muted">Axiom</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="./app.js" defer></script>
   </body>
 </html>
