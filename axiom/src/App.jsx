@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Chat from "./pages/Chat";
-import "./styles/globals.css"; // 👈 Asegúrate de importar aquí tu CSS global
+import "./styles/globals.css"; 
 
 function App() {
   return (

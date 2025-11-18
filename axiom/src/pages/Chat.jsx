@@ -80,8 +80,12 @@ export default function Chat() {
       <header className="chat-topbar minimal">
         <h1 className="brand-slim">Axiom</h1>
         <nav className="top-actions">
-          <span className="hello">Hola, <strong>{user.name}</strong></span>
-          <a className="link-exit" href="/logout">Salir</a>
+          <span className="hello">
+            Hola, <strong>{user.name}</strong>
+          </span>
+          <a className="link-exit" href="/logout">
+            Salir
+          </a>
         </nav>
       </header>
 
@@ -102,7 +106,9 @@ export default function Chat() {
           {msgs.map((m) => (
             <li key={m.id} className={`row ${m.role}`}>
               <div className="bubble clean">
-                {m.text.split("\n").map((p, i) => <p key={i}>{p}</p>)}
+                {m.text.split("\n").map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
                 {!!m.citations?.length && (
                   <div className="meta-line">
                     {m.citations.map((c, i) => (
@@ -119,7 +125,9 @@ export default function Chat() {
           {sending && (
             <li className="row assistant">
               <div className="bubble typing">
-                <span className="dot" /><span className="dot" /><span className="dot" />
+                <span className="dot" />
+                <span className="dot" />
+                <span className="dot" />
               </div>
             </li>
           )}
@@ -143,12 +151,26 @@ export default function Chat() {
               aria-label="Enviar"
             >
               {sending ? (
+                // Spinner simple (círculo animable con CSS .spin)
                 <svg className="spin" width="18" height="18" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M12 2a1 1..." />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeDasharray="40 20"
+                  />
                 </svg>
               ) : (
+                // Icono de enviar tipo "avioncito"
                 <svg width="18" height="18" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="m3.4 20.4..." />
+                  <path
+                    fill="currentColor"
+                    d="M2.01 21 23 12 2.01 3 2 10l14 2-14 2z"
+                  />
                 </svg>
               )}
             </button>

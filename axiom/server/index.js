@@ -8,6 +8,8 @@ import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { fileURLToPath } from "url";
 
+import { askLLM } from "./llm.js";
+
 // __dirname en ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,7 +30,7 @@ try {
   db.pragma("journal_mode = DELETE");
 }
 
-// Esquema mínimo
+// Esquema mínimo de usuarios
 db.exec(`
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,7 +60,7 @@ const loginSchema = z.object({
   password: z.string().min(8),
 });
 
-// --- Rutas
+// --- Rutas auth
 app.post("/api/auth/register", (req, res) => {
   const parse = registerSchema.safeParse(req.body);
   if (!parse.success) return res.status(400).json({ error: "Datos inválidos" });
@@ -93,17 +95,62 @@ app.post("/api/auth/login", (req, res) => {
   return res.json({ ok: true, user: { id: user.id, name: user.name, email: user.email } });
 });
 
-// --- Chat (stub temporal)
-app.post("/api/chat", (req, res) => {
-  const { message } = req.body || {};
-  const reply =
-    `Entendido: “${message}”. ` +
-    `Cuando integres tu biblioteca, te devolveré un resumen con citas exactas y fecha de vigencia.`;
-  const citations = [
-    { title: "Decreto 17-73 (CP Guatemala)", loc: "Art. 12" },
-    { title: "Constitución Política de la República", loc: "Art. 154" },
-  ];
-  res.json({ reply, citations });
+// --- Chat: usa TODOS los chunks como contexto simple
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { message } = req.body || {};
+    if (!message || typeof message !== "string") {
+      return res.status(400).json({ error: "Mensaje inválido" });
+    }
+
+    // 1) Leer chunks directamente desde SQLite
+    const rows = db
+      .prepare(
+        `
+        SELECT
+          c.id,
+          c.document_id,
+          c.chunk_index,
+          c.content,
+          d.title AS document_title
+        FROM chunks c
+        JOIN documents d ON d.id = c.document_id
+        ORDER BY c.document_id ASC, c.chunk_index ASC
+        LIMIT 5
+      `
+      )
+      .all();
+
+    console.log("[CHAT] chunks totales devueltos desde DB:", rows.length);
+
+    // 2) Construir contexto como texto
+    let contextText = "";
+    if (rows.length > 0) {
+      contextText = rows
+        .map(
+          (c, i) =>
+            `[#${i + 1}] (${c.document_title}, fragmento ${c.chunk_index + 1}):\n${c.content}`
+        )
+        .join("\n\n");
+    }
+
+    // 3) Preguntar al modelo con ese contexto
+    const reply = await askLLM(message, { context: contextText || undefined });
+
+    // 4) Construir citas para el frontend
+    const citations =
+      rows.length > 0
+        ? rows.map((c, i) => ({
+            title: c.document_title || "Documento legal",
+            loc: `Fragmento #${i + 1}`,
+          }))
+        : [];
+
+    return res.json({ reply, citations });
+  } catch (e) {
+    console.error("Error en /api/chat:", e);
+    return res.status(500).json({ error: "Error interno al consultar el modelo" });
+  }
 });
 
 // Salud

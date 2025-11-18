@@ -23,7 +23,7 @@ export default function Landing() {
         <div className="brand">Axiom</div>
 
         <h1 className="hero-title measure">
-          Respuestas legales <span className="text-metal">verificadas</span>
+          Respuestas <span className="text-metal">verificadas</span>
         </h1>
 
         <p className="hero-sub measure">
