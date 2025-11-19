@@ -95,7 +95,7 @@ app.post("/api/auth/login", (req, res) => {
   return res.json({ ok: true, user: { id: user.id, name: user.name, email: user.email } });
 });
 
-// --- Chat: usa TODOS los chunks como contexto simple
+// --- Chat: usa chunks desde SQLite como contexto para el LLM
 app.post("/api/chat", async (req, res) => {
   try {
     const { message } = req.body || {};
@@ -103,25 +103,57 @@ app.post("/api/chat", async (req, res) => {
       return res.status(400).json({ error: "Mensaje inválido" });
     }
 
-    // 1) Leer chunks directamente desde SQLite
-    const rows = db
-      .prepare(
-        `
-        SELECT
-          c.id,
-          c.document_id,
-          c.chunk_index,
-          c.content,
-          d.title AS document_title
-        FROM chunks c
-        JOIN documents d ON d.id = c.document_id
-        ORDER BY c.document_id ASC, c.chunk_index ASC
-        LIMIT 5
-      `
-      )
-      .all();
+    // 1) Intentar detectar si el usuario pregunta por un artículo concreto
+    //    Ej: "artículo 10", "Articulo 11", "ART 8", etc.
+    const artMatch = message.match(/art[ií]culo\s+(\d+)/i);
+    let rows = [];
 
-    console.log("[CHAT] chunks totales devueltos desde DB:", rows.length);
+    if (artMatch) {
+      const artNum = artMatch[1];
+      console.log(`[CHAT] Detectado número de artículo: ${artNum}`);
+
+      // Buscamos chunks que contengan exactamente "Artículo 10", "Artículo 11", etc.
+      rows = db
+        .prepare(
+          `
+          SELECT
+            c.id,
+            c.document_id,
+            c.chunk_index,
+            c.content,
+            d.title AS document_title
+          FROM chunks c
+          JOIN documents d ON d.id = c.document_id
+          WHERE c.content LIKE ?
+          ORDER BY c.document_id ASC, c.chunk_index ASC
+          LIMIT 8
+        `
+        )
+        .all(`%Artículo ${artNum}%`);
+
+      console.log("[CHAT] Chunks encontrados por Artículo:", rows.length);
+    }
+
+    // Si no se detectó artículo o no se encontró nada, usamos fallback genérico
+    if (!rows.length) {
+      rows = db
+        .prepare(
+          `
+          SELECT
+            c.id,
+            c.document_id,
+            c.chunk_index,
+            c.content,
+            d.title AS document_title
+          FROM chunks c
+          JOIN documents d ON d.id = c.document_id
+          ORDER BY c.document_id ASC, c.chunk_index ASC
+          LIMIT 8
+        `
+        )
+        .all();
+      console.log("[CHAT] Usando fallback genérico. Chunks devueltos:", rows.length);
+    }
 
     // 2) Construir contexto como texto
     let contextText = "";

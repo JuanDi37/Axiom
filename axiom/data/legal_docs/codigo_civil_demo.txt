@@ -1,7 +1,5 @@
 CÓDIGO CIVIL (GUATEMALA)
 
-
-
 Artículo 1. Personalidad.
 La personalidad civil comienza con el nacimiento y  termina con la muerte; sin embargo, al que está por nacer se le considera nacido para  todo lo que le favorece, siempre que nazca en condiciones de viabilidad.
 
@@ -27,10 +25,12 @@ La identificación y el cambio de nombre  no modifican la condición civil del q
 Artículo 8. Capacidad.
 La capacidad para el ejercicio de los derechos civiles se  adquiere por la may oría de edad.  Son mayores de edad los que han cumplido dieciocho años.  Los menores que han cumplido catorce años son capaces para algunos actos  determinados por la ley.
 
-Artículo 9. Incapacidad.
-Los mayores de edad que adolecen de enfermedad mental  que los priva de discernimiento, deben ser declarados en estado de interdicción.  Pueden asimismo ser declarados en estado de interdicción, las personas que por abuso  de bebidas alcohólicas o de estupefacientes, se exponen ellas mismas o exponen a sus  familias a gr aves perjuicios económicos.  La declaratoria de interdicción produce, desde la fecha en que sea establecida en  sentencia firme, incapacidad absoluta de la persona para el ejercicio de sus derechos;  pero los actos anteriores a tal declaratoria pueden ser anu lados si se probare que la  incapacidad existía notoriamente en la época en que se verificaron.
+Artículo 9. Incapacidad. Los mayores de edad que adolecen de enfermedad mental  que los priva de discernimiento, deben ser declarados en estado de interdicción.  Pueden asimismo ser declarados en estado de interdicción, las personas que por abuso  de bebidas alcohólicas o de estupefacientes, se exponen ellas mismas o exponen a sus  familias a gr aves perjuicios económicos.  La declaratoria de interdicción produce, desde la fecha en que sea establecida en  sentencia firme, incapacidad absoluta de la persona para el ejercicio de sus derechos;  pero los actos anteriores a tal declaratoria pueden ser anu lados si se probare que la  incapacidad existía notoriamente en la época en que se verificaron.
 
-Artículo 10. Las perturbaciones mentales transitorias no determinan la incapacidad  de obrar, pero son nulas las declaraciones de voluntad emitidas en tales situa ciones.
+
+Artículo 10. 
+Las perturbaciones mentales transitorias no determinan la incapacidad  de obrar, pero son nulas las declaraciones de voluntad emitidas en tales situa ciones.
+
 
 Artículo 11. Después de la muerte de un individuo, los actos realizados por él  mismo no podrán impugnarse por incapacidad sino cuando la interdicción ha sido  pedida antes de su muerte, o cuando la prueba de la incapacidad resulte del mismo  acto que se impugna.
 

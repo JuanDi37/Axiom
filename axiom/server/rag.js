@@ -22,7 +22,7 @@ const db = new Database(DB_PATH);
  * - Ignora la pregunta
  * - Devuelve hasta K chunks en orden (como contexto "global")
  */
-export function findRelevantChunks(_question, k = 5) {
+export function findRelevantChunks(_question, k = 1) {
   const rows = db
     .prepare(
       `

@@ -34,7 +34,7 @@ export const ChatAPI = {
   ask: (message) => request("POST", "/chat", { message }),
 };
 
-// Alias para mantener compatibilidad con `import { Chat as API } from "../lib/api";`
+
 export const Chat = ChatAPI;
 
 export const Debug = {
