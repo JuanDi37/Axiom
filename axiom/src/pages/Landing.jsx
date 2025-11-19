@@ -6,7 +6,7 @@ import { effectOptions } from "../components/effectOptions.cool.js";
  * Landing.jsx — Axiom
  * - Hero con 2 CTAs (Registrar / Ingresar)
  * - Fondo Hyperspeed a full-bleed detrás
- * - Secciones: Cómo funciona (3 pasos) y Tecnología
+ * - Secciones: Cómo funciona, Intencionalidad y Tecnología
  * - Sin CTA repetido y sin botones/enlaces en el footer
  */
 export default function Landing() {
@@ -23,16 +23,26 @@ export default function Landing() {
         <div className="brand">Axiom</div>
 
         <h1 className="hero-title measure">
-          Respuestas <span className="text-metal">verificadas</span>
+          Respuestas <span className="text-metal">verificadas</span> en derecho
         </h1>
 
         <p className="hero-sub measure">
-          Para Guatemala. Muestra fragmentos exactos y fecha de vigencia; si no hay sustento, te lo dice.
+          Asistente jurídico para Guatemala que responde en lenguaje natural y
+          muestra fragmentos exactos de normas y documentos relevantes.
+        </p>
+
+        <p className="hero-meta measure">
+          Procesa tus archivos en tu propia biblioteca y usa un modelo local
+          vía Ollama. La información no se envía a servicios externos.
         </p>
 
         <div className="actions">
-          <a className="button-primary" href="/register">Registrar</a>
-          <a className="button-ghost" href="/login">Ingresar</a>
+          <a className="button-primary" href="/register">
+            Registrar
+          </a>
+          <a className="button-ghost" href="/login">
+            Ingresar
+          </a>
         </div>
       </header>
 
@@ -45,33 +55,74 @@ export default function Landing() {
               <div className="step-num">1</div>
               <h3>Carga tus normas y documentos</h3>
               <p>
-                Organiza por país, tema y <em>vigencia</em>. El sistema indexa PDF/DOC y
-                extrae texto incluso de archivos difíciles.
+                Sube leyes, reglamentos, criterios y opiniones en texto o
+                PDF/DOC. Axiom los organiza por país, tema y <em>vigencia</em>,
+                los trocea en fragmentos y los indexa para búsqueda jurídica
+                precisa.
               </p>
             </li>
             <li className="step">
               <div className="step-num">2</div>
-              <h3>Haz tu pregunta</h3>
+              <h3>Haz tu pregunta en lenguaje natural</h3>
               <p>
-                El motor busca en tu biblioteca y responde <strong>frase por frase con cita</strong> y
-                fragmento exacto.
+                Plantea tu consulta tal como la formularías a otra persona. El
+                motor busca en tu biblioteca, elige los pasajes relevantes y
+                responde <strong>frase por frase con cita</strong>.
               </p>
             </li>
             <li className="step">
               <div className="step-num">3</div>
               <h3>Verificación y transparencia</h3>
               <p>
-                Si no hay apoyo suficiente, lo indica. Cuando sí, muestra la fuente, párrafo y fecha de
-                publicación/reforma.
+                Cada oración exige soporte documental. Si no hay apoyo suficiente,
+                Axiom lo indica con claridad. Cuando sí lo hay, muestra fuente,
+                párrafo, numeración de artículos y fecha de publicación o reforma
+                para confirmar la <em>vigencia</em>.
               </p>
             </li>
           </ol>
+        </div>
+      </section>
 
-          {/* ⬇️ Eliminado: CTA duplicado */}
-          {/* <div className="actions actions-inline">
-            <a className="button-primary" href="/register">Crear cuenta</a>
-            <a className="button-ghost" href="/login">Ingresar</a>
-          </div> */}
+      {/* INTENCIONALIDAD */}
+      <section id="intencionalidad" className="section section-alt">
+        <div className="container-xl">
+          <h2>Intencionalidad</h2>
+          <div className="tech-grid">
+            <div className="tech-card">
+              <h3>Para quién está pensado</h3>
+              <p>
+                Orientado a abogadas, abogados y equipos legales que necesitan
+                revisar normas con rapidez sin perder trazabilidad.
+              </p>
+              <p>
+                Busca complementar el análisis humano, no reemplazar el criterio
+                profesional ni la revisión detallada de la norma.
+              </p>
+            </div>
+            <div className="tech-card">
+              <h3>Qué busca lograr</h3>
+              <p>
+                Reducir tiempo en búsquedas manuales. Facilitar que cada respuesta
+                esté acompañada de citas y fragmentos verificables.
+              </p>
+              <p>
+                Hacer evidente la vigencia de lo citado y la procedencia de cada
+                pasaje para respaldar informes, correos y borradores.
+              </p>
+            </div>
+            <div className="tech-card">
+              <h3>Qué no hace</h3>
+              <p>
+                No sustituye interpretación jurídica, ni emite dictámenes ni
+                opiniones profesionales. Es una herramienta de apoyo.
+              </p>
+              <p>
+                No conecta con fuentes en línea de forma automática. Trabaja con
+                los documentos que tú decides cargar.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -82,27 +133,69 @@ export default function Landing() {
           <div className="tech-grid">
             <div className="tech-card">
               <h3>Frontend</h3>
-              <p>React + Vite. Interfaz limpia con resultados y citas. Fondo Hyperspeed optimizado y contraste accesible.</p>
+              <p>
+                Aplicación web en React + Vite con interfaz de chat minimalista.
+                Muestra la conversación y las citas jurídicas asociadas.
+              </p>
+              <p>
+                Fondo Hyperspeed optimizado, tipografía clara y contraste
+                accesible para uso prolongado.
+              </p>
             </div>
             <div className="tech-card">
               <h3>Backend local</h3>
-              <p>Servicio que recibe la pregunta, recupera pasajes y arma la respuesta con verificación y control de alucinaciones.</p>
+              <p>
+                API en Node/Express que gestiona registro, inicio de sesión y
+                consultas al modelo. Trabaja con SQLite para documentos e historial.
+              </p>
+              <p>
+                Todo el procesamiento se realiza en tu entorno local, sin depender
+                de servicios SaaS externos.
+              </p>
             </div>
             <div className="tech-card">
-              <h3>Citas y vigencia</h3>
-              <p>Cada oración exige cita. Índices por país y fecha (publicación/reforma) para priorizar normas vigentes.</p>
+              <h3>Motor LLM (Ollama)</h3>
+              <p>
+                Modelo de lenguaje ejecutado en tu máquina mediante Ollama
+                (<code>llama3.2</code>). El backend envía la pregunta y el contexto legal.
+              </p>
+              <p>
+                La configuración está orientada a reducir alucinaciones y a exigir
+                respaldo documental para cada afirmación.
+              </p>
             </div>
             <div className="tech-card">
-              <h3>PDFs difíciles</h3>
-              <p>Extracción robusta (OCR cuando se requiera) y normalización para mantener numeración de artículos y contexto.</p>
+              <h3>PDFs y textos difíciles</h3>
+              <p>
+                Pipeline de ingesta que transforma documentos en fragmentos
+                coherentes y aplica extracción robusta, con OCR cuando se necesita.
+              </p>
+              <p>
+                Preserva numeración de artículos, encabezados y contexto para
+                facilitar la trazabilidad de cada cita.
+              </p>
             </div>
             <div className="tech-card">
               <h3>Base de datos</h3>
-              <p>Relacional para usuarios, contraseñas (hash + salt) e historial de consultas y fuentes.</p>
+              <p>
+                SQLite como base relacional para usuarios, credenciales con hash,
+                documentos legales e historial de consultas.
+              </p>
+              <p>
+                Tablas especializadas para documentos y <em>chunks</em> permiten
+                búsquedas rápidas y reconstrucción de contexto.
+              </p>
             </div>
             <div className="tech-card">
               <h3>Experiencia confiable</h3>
-              <p>Si no hay sustento, se muestra claramente. Cuando lo hay, el fragmento exacto aparece con un clic.</p>
+              <p>
+                Cada respuesta se acompaña de fragmentos originales y metadatos
+                esenciales. La interfaz evita respuestas sin sustento jurídico.
+              </p>
+              <p>
+                Cuando no hay base suficiente, el sistema lo indica de forma directa
+                en lugar de completar contenido inventado.
+              </p>
             </div>
           </div>
         </div>
