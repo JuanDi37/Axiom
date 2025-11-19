@@ -28,12 +28,7 @@ export default function Landing() {
 
         <p className="hero-sub measure">
           Asistente jurídico para Guatemala que responde en lenguaje natural y
-          muestra fragmentos exactos de normas y documentos relevantes.
-        </p>
-
-        <p className="hero-meta measure">
-          Procesa tus archivos en tu propia biblioteca y usa un modelo local
-          vía Ollama. La información no se envía a servicios externos.
+          muestra fragmentos exactos de normas y criterios relevantes.
         </p>
 
         <div className="actions">
@@ -53,31 +48,38 @@ export default function Landing() {
           <ol className="steps">
             <li className="step">
               <div className="step-num">1</div>
-              <h3>Carga tus normas y documentos</h3>
+              <h3>Formula tu consulta jurídica</h3>
               <p>
-                Sube leyes, reglamentos, criterios y opiniones en texto o
-                PDF/DOC. Axiom los organiza por país, tema y <em>vigencia</em>,
-                los trocea en fragmentos y los indexa para búsqueda jurídica
-                precisa.
+                Escribe la duda en lenguaje natural. Puedes referirte a temas,
+                instituciones, artículos o situaciones concretas.
+              </p>
+              <p>
+                Axiom interpreta la consulta y la traduce a búsquedas dentro de
+                su base de normas de Guatemala.
               </p>
             </li>
             <li className="step">
               <div className="step-num">2</div>
-              <h3>Haz tu pregunta en lenguaje natural</h3>
+              <h3>Búsqueda en la base normativa</h3>
               <p>
-                Plantea tu consulta tal como la formularías a otra persona. El
-                motor busca en tu biblioteca, elige los pasajes relevantes y
-                responde <strong>frase por frase con cita</strong>.
+                El sistema recorre un corpus curado de leyes, reglamentos y otros
+                textos legales. Selecciona los pasajes con mayor relevancia.
+              </p>
+              <p>
+                A partir de esos fragmentos arma una respuesta estructurada y
+                conectada con el marco normativo aplicable.
               </p>
             </li>
             <li className="step">
               <div className="step-num">3</div>
-              <h3>Verificación y transparencia</h3>
+              <h3>Respuesta con citas verificables</h3>
               <p>
-                Cada oración exige soporte documental. Si no hay apoyo suficiente,
-                Axiom lo indica con claridad. Cuando sí lo hay, muestra fuente,
-                párrafo, numeración de artículos y fecha de publicación o reforma
-                para confirmar la <em>vigencia</em>.
+                Cada oración exige soporte documental. Axiom muestra fuente,
+                artículo, párrafo y fecha de publicación o reforma.
+              </p>
+              <p>
+                Si no encuentra apoyo suficiente para afirmar algo, lo indica de
+                forma clara antes de completar la respuesta.
               </p>
             </li>
           </ol>
@@ -92,34 +94,34 @@ export default function Landing() {
             <div className="tech-card">
               <h3>Para quién está pensado</h3>
               <p>
-                Orientado a abogadas, abogados y equipos legales que necesitan
-                revisar normas con rapidez sin perder trazabilidad.
+                Dirigido a personas y equipos legales que necesitan revisar el
+                marco normativo de Guatemala con rapidez y trazabilidad.
               </p>
               <p>
-                Busca complementar el análisis humano, no reemplazar el criterio
-                profesional ni la revisión detallada de la norma.
+                Diseñado para apoyar investigación y borradores, manteniendo
+                siempre visible la base legal de cada afirmación.
               </p>
             </div>
             <div className="tech-card">
               <h3>Qué busca lograr</h3>
               <p>
-                Reducir tiempo en búsquedas manuales. Facilitar que cada respuesta
-                esté acompañada de citas y fragmentos verificables.
+                Reducir tiempo en búsquedas dispersas y lecturas repetidas de
+                las mismas normas.
               </p>
               <p>
-                Hacer evidente la vigencia de lo citado y la procedencia de cada
-                pasaje para respaldar informes, correos y borradores.
+                Poner en un mismo lugar la respuesta en lenguaje natural y los
+                fragmentos concretos en que se apoya.
               </p>
             </div>
             <div className="tech-card">
-              <h3>Qué no hace</h3>
+              <h3>Qué límites tiene</h3>
               <p>
-                No sustituye interpretación jurídica, ni emite dictámenes ni
-                opiniones profesionales. Es una herramienta de apoyo.
+                No sustituye el criterio jurídico ni la revisión detallada de la
+                norma. Es una herramienta de apoyo a la persona profesional.
               </p>
               <p>
-                No conecta con fuentes en línea de forma automática. Trabaja con
-                los documentos que tú decides cargar.
+                Se limita al corpus normativo integrado en el sistema y no
+                navega en internet ni consulta fuentes externas en tiempo real.
               </p>
             </div>
           </div>
@@ -135,66 +137,67 @@ export default function Landing() {
               <h3>Frontend</h3>
               <p>
                 Aplicación web en React + Vite con interfaz de chat minimalista.
-                Muestra la conversación y las citas jurídicas asociadas.
+                La conversación se muestra junto a las citas jurídicas usadas.
               </p>
               <p>
-                Fondo Hyperspeed optimizado, tipografía clara y contraste
-                accesible para uso prolongado.
+                Fondo Hyperspeed, tipografía clara y contraste pensado para
+                sesiones de trabajo largas.
               </p>
             </div>
             <div className="tech-card">
               <h3>Backend local</h3>
               <p>
                 API en Node/Express que gestiona registro, inicio de sesión y
-                consultas al modelo. Trabaja con SQLite para documentos e historial.
+                envío de consultas al modelo.
               </p>
               <p>
-                Todo el procesamiento se realiza en tu entorno local, sin depender
-                de servicios SaaS externos.
+                Usa SQLite para almacenar usuarios, historial y referencias al
+                corpus normativo que alimenta las respuestas.
               </p>
             </div>
             <div className="tech-card">
               <h3>Motor LLM (Ollama)</h3>
               <p>
-                Modelo de lenguaje ejecutado en tu máquina mediante Ollama
-                (<code>llama3.2</code>). El backend envía la pregunta y el contexto legal.
+                Modelo de lenguaje ejecutado de forma local mediante Ollama
+                (<code>llama3.2</code>). Recibe la pregunta y el contexto legal
+                relevante.
               </p>
               <p>
-                La configuración está orientada a reducir alucinaciones y a exigir
-                respaldo documental para cada afirmación.
+                Configurado para priorizar claridad, citas explícitas y reducción
+                de respuestas sin sustento.
               </p>
             </div>
             <div className="tech-card">
-              <h3>PDFs y textos difíciles</h3>
+              <h3>Corpus jurídico</h3>
               <p>
-                Pipeline de ingesta que transforma documentos en fragmentos
-                coherentes y aplica extracción robusta, con OCR cuando se necesita.
+                Conjunto de normas, reglamentos y textos legales de Guatemala
+                integrados en el sistema y normalizados para consulta rápida.
               </p>
               <p>
-                Preserva numeración de artículos, encabezados y contexto para
-                facilitar la trazabilidad de cada cita.
+                Los contenidos se estructuran en fragmentos para facilitar la
+                recuperación y la trazabilidad de cada cita.
               </p>
             </div>
             <div className="tech-card">
               <h3>Base de datos</h3>
               <p>
-                SQLite como base relacional para usuarios, credenciales con hash,
-                documentos legales e historial de consultas.
+                SQLite como base relacional para usuarios, credenciales con hash
+                y registro de consultas.
               </p>
               <p>
-                Tablas especializadas para documentos y <em>chunks</em> permiten
-                búsquedas rápidas y reconstrucción de contexto.
+                Permite seguir qué normas se usaron con mayor frecuencia y cómo
+                se apoyan las respuestas en el corpus.
               </p>
             </div>
             <div className="tech-card">
               <h3>Experiencia confiable</h3>
               <p>
-                Cada respuesta se acompaña de fragmentos originales y metadatos
-                esenciales. La interfaz evita respuestas sin sustento jurídico.
+                La interfaz evita respuestas opacas. Cada sección de texto puede
+                vincularse a su fragmento legal correspondiente.
               </p>
               <p>
-                Cuando no hay base suficiente, el sistema lo indica de forma directa
-                en lugar de completar contenido inventado.
+                Cuando el sistema no está seguro, lo declara y anima a revisar
+                directamente la norma relacionada.
               </p>
             </div>
           </div>
