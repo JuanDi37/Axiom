@@ -1,5 +1,5 @@
 // server/ingest.js
-// Script para ingerir documentos legales en SQLite como documentos + chunks (sin embeddings todavía)
+// Script para ingerir documentos legales en SQLite como documentos + chunks
 
 import fs from "fs";
 import path from "path";

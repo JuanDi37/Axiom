@@ -30,7 +30,6 @@ export const Auth = {
   login: (payload) => request("POST", "/auth/login", payload),
 };
 
-// Nota: /chat aún puede no existir en el backend; esto es un stub/cliente.
 export const ChatAPI = {
   ask: (message) => request("POST", "/chat", { message }),
 };

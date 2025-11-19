@@ -27,9 +27,9 @@ export async function askLLM(question, { context } = {}) {
   promptParts.push(question);
 
   const body = {
-    model: "llama3.2",           // mismo modelo que ya probaste con test-ollama
+    model: "llama3.2",
     prompt: promptParts.join("\n\n"),
-    stream: false,               // una sola respuesta JSON
+    stream: false,
   };
 
   const res = await fetch(`${OLLAMA_URL}/api/generate`, {

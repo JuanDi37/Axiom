@@ -1,16 +1,47 @@
-# React + Vite
+# Axiom – Asistente jurídico con LLM local
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Axiom es un asistente jurídico experimental pensado para abogados y estudios legales.  
+Permite hacer preguntas en lenguaje natural y responde **citando fragmentos de normas**.
 
-Currently, two official plugins are available:
+El modelo de lenguaje no se conecta a ninguna API externa:  
+usa **Ollama** corriendo en mi máquina, con un modelo open-source (en mi caso `llama3.2`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Descripción general
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+La arquitectura es sencilla:
 
-## Expanding the ESLint configuration
+- **Frontend (web)**  
+  Aplicación en React que muestra:
+  - Pantallas de landing, login/registro y chat.
+  - Un chat tipo “Gemini/ChatGPT” minimalista.
+  - Preguntas rápidas y citas de las fuentes usadas en cada respuesta.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Backend (API)**  
+  Servidor Node/Express que se encarga de:
+  - Registro e inicio de sesión de usuarios (con SQLite).
+  - Recibir las preguntas del chat.
+  - Leer los trozos de documentos legales desde SQLite.
+  - Llamar a Ollama con la pregunta + contexto legal.
+  - Devolver respuesta + citas al frontend.
+
+- **Motor LLM (Ollama)**  
+  Ollama corre en la máquina host y expone un endpoint HTTP local.  
+  El backend le envía:
+  - La pregunta del usuario.
+  - El contexto: trozos de textos legales que se han indexado previamente.
+
+- **Biblioteca legal**  
+  Tus documentos legales (por ahora en `.txt`) se guardan en:
+  - `data/legal_docs/`  
+  Un script de ingesta los:
+  - Lee.
+  - Trocea en fragmentos.
+  - Los guarda en las tablas `documents` y `chunks` de `app.db`.
+
+---
+
+## 🛠️ Tecnologías usadas
+
+- **Frontend**
