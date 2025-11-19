@@ -126,7 +126,7 @@ app.post("/api/chat", async (req, res) => {
           JOIN documents d ON d.id = c.document_id
           WHERE c.content LIKE ?
           ORDER BY c.document_id ASC, c.chunk_index ASC
-          LIMIT 8
+          LIMIT 400
         `
         )
         .all(`%Artículo ${artNum}%`);
